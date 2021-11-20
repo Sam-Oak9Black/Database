@@ -1,4 +1,3 @@
-
 import sqlite3
 from sqlite3 import Error
 
@@ -42,12 +41,13 @@ def execute_read_query(connection, query):
 
 
 ####### Connect/Create to the Sqlite3 Database File ***********
-connection = create_connection("oak9_database_pods")
+connection = create_connection("data")
 
 
 
 
 ###################  Create staff table variable query #####
+print("create staff table variable query")
 create_staff_member_table_query = """
 CREATE TABLE IF NOT EXISTS staff (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -73,12 +73,14 @@ VALUES
   ('Akeeem','(415) 684-0505','Programs Director');
 """
 ###############  Execute insert staff members query ############
+print("execute query")
 execute_query(connection, add_staff_members_query)
 
 
 
 
 ################## Display staff_member Query #########
+print("display staff members")
 display_staff_query = "SELECT * from staff"
 staff = execute_read_query(connection, display_staff_query)
 
