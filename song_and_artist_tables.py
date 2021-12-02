@@ -20,13 +20,35 @@ INSERT INTO
   song_list (name,artist,year)
 VALUES
   ('Down Under','Men At Work','1981'),
-  ('Take on Me','A-ha', '1984'),
   ('ONE LIFE','The Pillows','1998'),
-  ('Wind','Akeboshi','2002');
+  ('Catch Your Dream','Mouse Rat','2012'),
+  ('I Can See It In Your Eyes','Men At Work','1981'),
+  ('Runner's High','The Pillows','1999'),
+  ('The Way You Look Tonight','Mouse Rat','2010');
+"""
+
+# Artist List Table
+create_artist_table_query = """
+CREATE TABLE IF NOT EXISTS artist_list(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  artist TEXT NOT NULL,
+  record_label TEXT NOT NULL
+);
+"""
+
+# Artists
+add_artist_list_query = """
+INSERT INTO
+  artist_list (artist,record_label)
+VALUES
+  ('Men at Work','Sony Music Entertainment'),
+  ('The Pillows','King Records'),
+  ('Mouse Rat','Dualtone Records');
 """
 
 # Select Statement
 display_song_list_query = "SELECT * from song_list"
+display_artist_list_query = "SELECT * from artist_list"
 
 #******** Function Definitions *****************#
 
@@ -70,16 +92,27 @@ def execute_read_query(connection, query):
 connection = create_connection("toDatabase")
 
 # Execute query to create table
-execute_query(connection, create_song_table_query) 
+execute_query(connection, create_song_table_query)
+execute_query(connection, create_artist_table_query) 
 
 # Execute Query to Insert Data
 execute_query(connection, add_song_list_query)
+execute_query(connection, add_artist_list_query)
 
 # Return results from select query
 songs = execute_read_query(connection, display_song_list_query)
+artists = execute_read_query(connection, display_artist_list_query)
 
 # Print each song's info
 for song in songs:
   print(song)
 
+# Print each artist's info
+for artist in artists:
+  print(artist)
 
+# Delete the Song List Table
+execute_query(connection,'drop table song_list')
+
+# Delete the Artist List Table
+execute_query(connection,'drop table artist_list')

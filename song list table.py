@@ -82,4 +82,5 @@ songs = execute_read_query(connection, display_song_list_query)
 for song in songs:
   print(song)
 
-
+# Delete the Song List Table
+execute_query(connection,'drop table song_list')
