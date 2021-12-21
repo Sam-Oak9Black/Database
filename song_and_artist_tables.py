@@ -23,7 +23,7 @@ VALUES
   ('ONE LIFE','The Pillows','1998'),
   ('Catch Your Dream','Mouse Rat','2012'),
   ('I Can See It In Your Eyes','Men At Work','1981'),
-  ('Runner's High','The Pillows','1999'),
+  ("Runner's High","The Pillows","1999"),
   ('The Way You Look Tonight','Mouse Rat','2010');
 """
 

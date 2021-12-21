@@ -83,4 +83,4 @@ for employee in staff_members:
   print(employee)
 
 # Delete the Staff Table
-execute_query(connection,'drop table staff')
+#execute_query(connection,'drop table staff')
